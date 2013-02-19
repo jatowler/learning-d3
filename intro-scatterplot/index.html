@@ -41,6 +41,11 @@
                            .domain([0, d3.max(dataset, function(d) { return d[1]; })])
                            .range([2, 5]);
 
+      var xAxis = d3.svg.axis()
+                        .scale(xScale)
+                        .orient("bottom")
+                        .ticks(5);;
+
       var svg = d3.select("body")
                      .append("svg")
                      .attr("width", svgWidth)
@@ -75,7 +80,12 @@
             })
             .attr("font-family", "sans-serif")
             .attr("font-size", "11px")
-            .attr("fill", "red")
+            .attr("fill", "red");
+
+      svg.append("g")
+         .attr("class", "axis")
+         .attr("transform", "translate(0," + (svgHeight - marginPadding) + ")")
+         .call(xAxis);
     </script>
   </body>
 </html>
