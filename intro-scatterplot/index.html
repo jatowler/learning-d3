@@ -27,13 +27,14 @@
       var svgWidth = 500;
       var svgHeight = 100;
       var barPadding = 1;
+      var marginPadding = 20;
 
       var xScale = d3.scale.linear()
                            .domain([0, d3.max(dataset, function(d) { return d[0]; })])
-                           .range([0, svgWidth]);
+                           .range([marginPadding, svgWidth - marginPadding]);
       var yScale = d3.scale.linear()
                            .domain([0, d3.max(dataset, function(d) { return d[1]; })])
-                           .range([0, svgHeight]);
+                           .range([svgHeight - marginPadding, marginPadding]);
 
       var svg = d3.select("body")
                      .append("svg")
