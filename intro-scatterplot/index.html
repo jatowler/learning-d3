@@ -36,6 +36,10 @@
                            .domain([0, d3.max(dataset, function(d) { return d[1]; })])
                            .range([svgHeight - marginPadding, marginPadding]);
 
+      var rScale = d3.scale.linear()
+                           .domain([0, d3.max(dataset, function(d) { return d[1]; })])
+                           .range([2, 5]);
+
       var svg = d3.select("body")
                      .append("svg")
                      .attr("width", svgWidth)
@@ -52,7 +56,7 @@
                 return yScale(d[1]);
             })
             .attr("r", function(d) {
-                return Math.sqrt(svgHeight - d[1]);
+                return rScale(d[1]);
             });
 
       svg.selectAll("text")
