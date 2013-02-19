@@ -28,7 +28,7 @@
       var svgWidth = 500;
       var svgHeight = 300;
       var barPadding = 1;
-      var marginPadding = 20;
+      var marginPadding = 30;
 
       var xScale = d3.scale.linear()
                            .domain([0, d3.max(dataset, function(d) { return d[0]; })])
@@ -44,7 +44,12 @@
       var xAxis = d3.svg.axis()
                         .scale(xScale)
                         .orient("bottom")
-                        .ticks(5);;
+                        .ticks(5);
+
+      var yAxis = d3.svg.axis()
+                        .scale(yScale)
+                        .orient("left")
+                        .ticks(5);
 
       var svg = d3.select("body")
                      .append("svg")
@@ -86,6 +91,11 @@
          .attr("class", "axis")
          .attr("transform", "translate(0," + (svgHeight - marginPadding) + ")")
          .call(xAxis);
+      
+      svg.append("g")
+         .attr("class", "axis")
+         .attr("transform", "translate(" + marginPadding + ",0)")
+         .call(yAxis);
     </script>
   </body>
 </html>
